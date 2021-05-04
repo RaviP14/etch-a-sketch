@@ -15,17 +15,38 @@ function makeGrid(rows, columns) {
 makeGrid(16,16)
 
 //add hover to divs
-const hovers = document.querySelectorAll('.gridDiv');
+const gridDivs = document.querySelectorAll('.gridDiv');
 
-hovers.forEach((gridDiv) => {
+gridDivs.forEach((gridDiv) => {
     gridDiv.addEventListener('mouseenter', bgColor);
 })
-
-//button to clear grid 
+ 
 function bgColor() {
     this.style.backgroundColor = 'black';
 }
 
-const clearGrid = document.querySelector('.bClear');
+//button to clear grid
+const clearGrid = document.querySelector('.btnClear');
 
-clearGrid.addEventListener('click', )
+
+clearGrid.addEventListener('click', () => {
+    bgColorReset()
+    promptGrid()
+});
+
+
+function bgColorReset() {
+    gridDivs.forEach((gridDiv) => {
+        gridDiv.style.backgroundColor = 'white';
+    })
+}
+
+function promptGrid() {
+   let chooseGrid = prompt('Choose Grid Size (max: 100)','');
+   if (chooseGrid <= 100) {
+       return chooseGrid;
+   } else {
+       alert('Choose a number between 1 - 100')
+       promptGrid()
+   }
+}
