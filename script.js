@@ -6,7 +6,7 @@ function makeGrid(rows, columns) {
     for (let i = 0; i < (rows * columns); i++) {
         let gridDiv = document.createElement('div');
         gridDiv.className = 'gridDiv';
-        gridDiv.style.width = '2em';
+        gridDiv.style.width = '100%';
         gridDiv.style.height = '2em';
         container.appendChild(gridDiv);
     }
@@ -28,9 +28,9 @@ function bgColor() {
 //button to clear grid
 const clearGrid = document.querySelector('.btnClear');
 
-
 clearGrid.addEventListener('click', () => {
-    bgColorReset()
+    //bgColorReset()
+    gridReset()
     promptGrid()
 });
 
@@ -41,10 +41,18 @@ function bgColorReset() {
     })
 }
 
+function gridReset() {
+    const remDiv = document.querySelectorAll('.gridDiv');
+
+    remDiv.forEach((gridDiv) => {
+        container.removeChild(gridDiv)
+    })
+}
+
 function promptGrid() {
    let chooseGrid = prompt('Choose Grid Size (max: 100)','');
    if (chooseGrid <= 100) {
-       return chooseGrid;
+       return makeGrid(chooseGrid,chooseGrid);
    } else {
        alert('Choose a number between 1 - 100')
        promptGrid()
