@@ -5,12 +5,14 @@ function makeGrid(rows, columns) {
     container.style.setProperty('--grid-cols', columns);
     for (let i = 0; i < (rows * columns); i++) {
         let gridDiv = document.createElement('div');
+        gridDiv.style.height = `${(660) / rows}px`;
+        gridDiv.style.width = `${(660) / columns}px`;
         gridDiv.className = 'gridDiv';
-        gridDiv.style.width = '100%';
-        gridDiv.style.height = '2em';
         container.appendChild(gridDiv);
     }
 }
+
+
 
 makeGrid(16,16)
 
