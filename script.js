@@ -1,4 +1,5 @@
 const container = document.querySelector('.container');
+
 //creates a grid of divs
 function makeGrid(rows, columns) {
     container.style.setProperty('--grid-rows', rows);
@@ -10,38 +11,39 @@ function makeGrid(rows, columns) {
         gridDiv.className = 'gridDiv';
         container.appendChild(gridDiv);
     }
+    //add hover to divs
+    const gridDivs = document.querySelectorAll('.gridDiv');
+
+    gridDivs.forEach((gridDiv) => {
+        gridDiv.addEventListener('mouseenter', bgColor);
+    })
+    let colors = ['#d8f3dc', '#b7e4c7', '#95d5b2', '#74c69d', '#52b788', '#40916c', '#2d6a4f', '#1b4332', '#081c15']
+    function bgColor() {
+        this.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+    //button to clear grid
+    const clearGrid = document.querySelector('.btnClear');
+
+    clearGrid.addEventListener('click', () => {
+        bgColorReset()
+    })
+    function bgColorReset() {
+        gridDivs.forEach((gridDiv) => {
+            gridDiv.style.backgroundColor = 'white';
+        })
+    }
+
 }
-
-
 
 makeGrid(16,16)
 
-//add hover to divs
-const gridDivs = document.querySelectorAll('.gridDiv');
+//button to choose grid size
+const chooseGrid = document.querySelector('.btnChoose');
 
-gridDivs.forEach((gridDiv) => {
-    gridDiv.addEventListener('mouseenter', bgColor);
-})
- 
-function bgColor() {
-    this.style.backgroundColor = 'black';
-}
-
-//button to clear grid
-const clearGrid = document.querySelector('.btnClear');
-
-clearGrid.addEventListener('click', () => {
-    //bgColorReset()
+chooseGrid.addEventListener('click', () => {
     gridReset()
     promptGrid()
 });
-
-
-function bgColorReset() {
-    gridDivs.forEach((gridDiv) => {
-        gridDiv.style.backgroundColor = 'white';
-    })
-}
 
 function gridReset() {
     const remDiv = document.querySelectorAll('.gridDiv');
