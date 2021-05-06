@@ -11,7 +11,7 @@ function makeGrid(rows, columns) {
         gridDiv.className = 'gridDiv';
         container.appendChild(gridDiv);
     }
-    //add hover to divs
+    //add hoverover to divs(&default color)
     const gridDivs = document.querySelectorAll('.gridDiv');
 
     gridDivs.forEach((gridDiv) => {
@@ -21,6 +21,35 @@ function makeGrid(rows, columns) {
     function bgColor() {
         this.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
     }
+    //button to set back to greens color
+    const greens = document.querySelector('.colorGreen');
+    greens.addEventListener('click', () => {
+        const gridDivs = document.querySelectorAll('.gridDiv');
+
+        gridDivs.forEach((gridDiv) => {
+            gridDiv.addEventListener('mouseenter', bgColor);
+        })
+
+        let colors = ['#d8f3dc', '#b7e4c7', '#95d5b2', '#74c69d', '#52b788', '#40916c', '#2d6a4f', '#1b4332', '#081c15']
+        
+        function bgColor() {
+            this.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+    })
+    //button for random color 
+    const rdmColors = document.querySelector('.rdmColor');
+    rdmColors.addEventListener('click', () => {
+        const gridDivs = document.querySelectorAll('.gridDiv');
+
+        gridDivs.forEach((gridDiv) => {
+            gridDiv.addEventListener('mouseenter', getRandomColor);
+        })
+
+        function getRandomColor() {
+            this.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16); 
+        }
+    })
+
     //button to clear grid
     const clearGrid = document.querySelector('.btnClear');
 

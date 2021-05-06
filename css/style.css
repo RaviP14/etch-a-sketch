@@ -19,11 +19,12 @@ button {
     background-color: #40916c;
     padding: 1em;
     border-radius: 10px;
+    font-size: 13px;
 }
 button:hover {
     background-color: #2d6a4f;
 }
-.btnClear {
+.btnClear, .colorGreen, .rdmColor {
     margin-left: 0.8em;
 }
 
@@ -40,7 +41,7 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
   }
-  
+  /*taget gridDiv (using > *) */
   .container > * {
     background-color: white;
     width: 100%;
